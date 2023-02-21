@@ -1,9 +1,4 @@
-#!/usr/bin/env node
 
-/**
- * @file Run express.js
- * @author Fikri Rahmat Nurhidayat
- */
 
 const app = require("../app")
 const port = process.env.PORT || 8000;

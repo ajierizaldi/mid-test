@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
 const router = require("../config/routes");
+const YAML = require("yamljs");
 
 const publicDir = path.join(__dirname, "../public");
 const viewsDir = path.join(__dirname, "./views");
@@ -14,6 +15,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 /** Install View Engine */
+const apiDocs = YAML.load(viewsDir + "/api-docs.yaml");
 app.set("views", viewsDir);
 app.set("view engine", "ejs");
 

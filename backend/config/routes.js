@@ -1,8 +1,13 @@
 const express = require("express");
 const controllers = require("../app/controllers");
+const swaggerUi = require("swagger-ui-express");
+const apiDocs = require('../app')
 
+const openApiRouter = express.Router();
 const appRouter = express.Router();
 const apiRouter = express.Router();
+
+openApiRouter.get("/api-docs", swaggerUi.serve, swaggerUi.setup(apiDocs));
 
 /** Mount GET / handler */
 appRouter.get("/", controllers.main.index);

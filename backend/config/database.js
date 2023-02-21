@@ -1,36 +1,32 @@
-/**
- * @file Manages database connection configuration.
- * @author Fikri Rahmat Nurhidayat
- */
-
 /** Destruct environment variable to get database configuration */
-const {
-  DB_USERNAME = null,
-  DB_PASSWORD = null,
-  DB_HOST = "127.0.0.1",
-  DB_NAME = "database",
-} = process.env;
+// const {
+//   DB_USERNAME = null,
+//   DB_PASSWORD = null,
+//   DB_HOST = "127.0.0.1",
+//   DB_NAME = "database",
+// } = process.env;
+require("dotenv").config();
 
 module.exports = {
   development: {
-    username: DB_USERNAME,
-    password: DB_PASSWORD,
-    database: `${DB_NAME}_development`,
-    host: DB_HOST,
-    dialect: "postgres",
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT,
   },
   test: {
-    username: DB_USERNAME,
-    password: DB_PASSWORD,
-    database: `${DB_NAME}_test`,
-    host: DB_HOST,
-    dialect: "postgres",
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT,
   },
-  production: {
-    username: DB_USERNAME,
-    password: DB_PASSWORD,
-    database: `${DB_NAME}_production`,
-    host: DB_HOST,
-    dialect: "postgres",
-  },
+  // production: {
+  //   username: process.env.DB_USERNAME,
+  //   password: process.env.DB_PASSWORD,
+  //   database: process.env.DB_NAME,
+  //   host: process.env.DB_HOST,
+  //   dialect: process.env.DB_DIALECT,
+  // },
 };
