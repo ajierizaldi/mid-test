@@ -2,6 +2,9 @@ const express = require("express");
 const controllers = require("../app/controllers");
 const swaggerUi = require("swagger-ui-express");
 const apiDocs = require('../app')
+// const controllers = require("../app/controllers");
+const app = require("../app");
+
 
 const openApiRouter = express.Router();
 const appRouter = express.Router();
@@ -16,23 +19,16 @@ appRouter.get("/", controllers.main.index);
  * TODO: Implement your own API
  *       implementations
  */
-apiRouter.get("/api/v1/posts", controllers.api.v1.post.list);
-apiRouter.post("/api/v1/posts", controllers.api.v1.post.create);
-apiRouter.put(
-  "/api/v1/posts/:id",
-  controllers.api.v1.post.setPost,
-  controllers.api.v1.post.update
-);
-apiRouter.get(
-  "/api/v1/posts/:id",
-  controllers.api.v1.post.setPost,
-  controllers.api.v1.post.show
-);
-apiRouter.delete(
-  "/api/v1/posts/:id",
-  controllers.api.v1.post.setPost,
-  controllers.api.v1.post.destroy
-);
+
+// User API
+apiRouter.get("/api/user/:id", controllers.api.v1.userControllers.getProfile);
+apiRouter.get("/api/users", controllers.api.v1.userControllers.getAllUsers);
+apiRouter.post("/api/register", controllers.api.v1.userControllers.register);
+apiRouter.post("/api/login", controllers.api.v1.userControllers.login);
+
+// Product API
+
+
 
 /**
  * TODO: Delete this, this is just a demonstration of
