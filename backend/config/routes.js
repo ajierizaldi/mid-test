@@ -27,7 +27,8 @@ apiRouter.post("/api/register", controllers.api.v1.userControllers.register);
 apiRouter.post("/api/login", controllers.api.v1.userControllers.login);
 
 // Product API
-
+apiRouter.get("/api/products", controllers.api.v1.productControllers.getAllProduct);
+apiRouter.get("/api/product/:id", controllers.api.v1.productControllers.getProductById);
 
 
 /**

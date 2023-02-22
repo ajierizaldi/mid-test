@@ -7,11 +7,11 @@ const instance = axios.create({
 module.exports = {
     getAllProduct: async (req, res) => {
         try {
-            const { datas } = await instance.get();
+            const { data } = await instance.get('/');
             res.status(200).json({
                 "success": true,
                 "error": 0,
-                "data": datas,
+                "data": data,
                 "message": "All products"
             });
         } catch (error) {
