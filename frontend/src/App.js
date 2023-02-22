@@ -1,26 +1,19 @@
-import {
-  Router,
-  Route
-} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+
+import Login from './pages/Auth/Login/Login';
 import Dashboard from './pages/Dashboard';
-import {
-  Login,
-  Register
-} from './pages/Auth';
-import {
-  ProductList,
-  ProductDetail
-} from './pages/Product';
 
 function App() {
   return (
-    <Router>
-      <Route path="/" component={Dashboard} />
-      <Route path="/login" component={Login} />
-      <Route path="/register" component={Register} />
-      <Route path="/products" component={ProductList} />
-      <Route path="/product/:id" component={ProductDetail} />
-    </Router>
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+
+        {/* if no route matches, show 404 */}
+        <Route path="*" element={<h1>404 Not Found</h1>} />
+      </Routes>
+    </div>
   );
 }
 

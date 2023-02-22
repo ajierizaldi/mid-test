@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-// import axios from 'axios';
+import axios from 'axios';
 import { useDispatch } from 'react-redux';
 
 
-import styles from '../../styles/Login.module.css';
+import styles from '../../../styles/Login.module.css';
 import { postRequest, getRequest } from '../../../api/apiConfig'
 import LoadingAnimation from '../../../components/LoadingAnimation';
 
@@ -68,7 +68,7 @@ const Login = () => {
                 <main className={styles.flexContainer}>
                     <div className={styles.flexLeft}>
                         <div>
-                            Ini<br></br> Gudang.
+                            Student<br></br> App.
                         </div>
                     </div>
                     <div className={styles.flexRight}>
@@ -111,7 +111,7 @@ const Login = () => {
                                         ) : null}
                                     </div>
                                     <p className={styles.forget}>
-                                        <Link href="forget-password">Lupa password?</Link>
+                                        <a href="forget-password">Lupa password?</a>
                                     </p>
                                     {onLoading ? <LoadingAnimation /> :
                                         <button type="submit" className={styles.button}>
@@ -124,7 +124,7 @@ const Login = () => {
                                 {/* <hr></hr> */}
                             </div>
                             <p className={styles.footer}>
-                                Belum punya akun? <Link href="register">Daftar disini</Link>
+                                Belum punya akun? <a href="register">Daftar disini</a>
                             </p>
                         </div>
                     </div>
