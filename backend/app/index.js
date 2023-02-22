@@ -4,7 +4,6 @@ const morgan = require("morgan");
 const path = require("path");
 const router = require("../config/routes");
 const YAML = require("yamljs");
-const session = require("express-session");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
@@ -18,14 +17,6 @@ app.use(cors());
 /** Install body-parser */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-/** use and setting express-session */
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    // cookie: { secure: false }
-}));
 
 /** Install request logger */
 app.use(morgan("dev"));

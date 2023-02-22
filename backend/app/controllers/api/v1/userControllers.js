@@ -1,6 +1,6 @@
 const model = require('../../../models')
-const { genSalt, hash, compareSync, compare } = require('bcrypt')
-const session = require('express-session')
+const { genSalt, hash, compareSync } = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 const cryptPassword = async (password) => {
     const salt = await genSalt(12)
@@ -47,11 +47,20 @@ module.exports = {
             }
 
             if (compareSync(req.body.password, userExist.password)) {
-                req.session.user = userExist
+                const token = jwt.sign({
+                    id: userExist.id,
+                    name: userExist.name,
+                    username: userExist.username,
+                }, process.env.JWT_SECRET, {
+                    expiresIn: '12h'
+                })
+
                 return res.status(200).json({
                     "success": true,
                     "error": 0,
-                    "data": userExist,
+                    "data": {
+                        "token": token
+                    },
                     "message": "User logged in successfully"
                 })
             }
