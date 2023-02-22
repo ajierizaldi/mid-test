@@ -20,8 +20,10 @@
     "dotenv": "^16.0.3",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
+    "express-validator": "^6.15.0",
     "morgan": "^1.10.0",
     "mysql2": "^3.1.2",
+    "redis": "^4.6.4",
     "sequelize": "^6.18.0",
     "swagger-ui-express": "^4.6.1",
     "yamljs": "^0.3.0"
